@@ -1,20 +1,18 @@
 <template>
-    <HelloWorld></HelloWorld>
+  <HelloWorld></HelloWorld>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import HelloWorld from './components/HelloWorld.vue'
 export default {
+  components: { HelloWorld },
   data() {
     return {
-      name: 1,
-    };
+      name: 1
+    }
   },
-  components: {HelloWorld},
-  created() { },
-};
+  created() {}
+}
 </script>
 
-<style>
-
-</style>
+<style></style>

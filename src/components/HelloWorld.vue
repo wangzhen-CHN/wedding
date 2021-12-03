@@ -1,30 +1,25 @@
 <template>
   <div>
-    <h1>
-      HelloWorld 
-    </h1>
-    <h2>
-      Vue2 
-    </h2>
-    
+    <h1>HelloWorld</h1>
+    <h2>Vue2</h2>
   </div>
 </template>
 
 <script>
 export default {
-  name: "",
+  name: '',
   data() {
-    return {};
-  },
-};
+    return {}
+  }
+}
 </script>
 <style scoped>
-h1{
+h1 {
   color: #4fc08d;
   margin-top: 20%;
   text-align: center;
 }
-h2{
+h2 {
   text-align: center;
 }
 </style>

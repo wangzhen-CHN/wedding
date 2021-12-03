@@ -1,0 +1,32 @@
+{
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "eslint.validate": ["javascript", "vue", "css", "less"],
+  "stylelint.enable": true,
+  "stylelint.validate": ["vue"],
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+  // 指定哪些文件不参与搜索
+  "search.exclude": {
+    "**/node_modules": true,
+    "dist": true,
+    "package-lock.json": true
+  },
+  // 指定哪些文件不被 VSCode 监听，预防启动 VSCode 时扫描的文件太多，导致 CPU 占用过高
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true,
+    "**/dist/**": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
