@@ -1,9 +1,20 @@
 {
-  "printWidth": 120,
+  "trailingComma": "none",
+  "tabWidth": 2,
   "semi": false,
   "singleQuote": true,
-  "htmlWhitespaceSensitivity": "css",
+  "jsxSingleQuote": true,
   "endOfLine": "auto",
-  "trailingComma": "none",
-  "arrowParens": "avoid"
+  "printWidth": 150,
+  "proseWrap": "never",
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "overrides": [
+    {
+      "files": ".prettierrc",
+      "options": {
+        "parser": "json"
+      }
+    }
+  ]
 }

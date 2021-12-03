@@ -2,9 +2,9 @@
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
-  "eslint.validate": ["javascript", "vue", "css", "less"],
+  "eslint.validate": ["javascript", "vue"],
   "stylelint.enable": true,
-  "stylelint.validate": ["vue"],
+  "stylelint.validate": ["vue", "css", "less"],
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
