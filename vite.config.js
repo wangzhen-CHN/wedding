@@ -1,7 +1,9 @@
-import { createVuePlugin } from 'vite-plugin-vue2';
+import { createVuePlugin } from 'vite-plugin-vue2'
 
 export default {
-  plugins: [
-    createVuePlugin()
-  ]
+  plugins: [createVuePlugin()],
+  server: {
+    host: '0.0.0.0',
+    port: 9000
+  }
 }

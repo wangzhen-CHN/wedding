@@ -1,18 +1,14 @@
 <template>
-  <HelloWorld></HelloWorld>
+  <Loading></Loading>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Loading from './components/Loading.vue'
 export default {
-  components: { HelloWorld },
+  components: { Loading },
   data() {
-    return {
-      name: 1
-    }
+    return {}
   },
   created() {}
 }
 </script>
-
-<style></style>

@@ -1,0 +1,103 @@
+//颜色
+@primary-color:#017CF5;
+@secondary-color:#020F59;
+
+@link-color : #0C6;
+@text-color : #333;
+
+@bg-color:#F2F2F2;
+
+//文字
+@font-family:  "NotoSans", "NotoSansUI", "PingFang SC", "HiraginoSansGB-W3","Microsoft Yahei","Helvetica Neue",Helvetica,Arial,sans-serif;
+@font-size:14px;
+@font-weight:normal;
+
+//文本
+@line-height:1.6;
+
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body{
+    color: @text-color;
+    line-height: @line-height;
+    background-color: #FFF;
+}
+
+img{
+    max-width:100%;
+}
+
+a{
+    color: @primary-color;
+    text-decoration: none;
+    transition: color 0.4s;
+
+    &:hover{
+        color: darken(@primary-color,20%);
+    }
+}
+
+ul{
+    margin:0;
+    padding: 0;
+    list-style: none;
+}
+/* 要注意表单元素并不继承父级 font 的问题 */
+body, button, input, select, textarea {
+    font-weight: @font-weight;
+    font-size: @font-size;
+    font-family: @font-family;
+    -webkit-font-smoothing: antialiased;
+}
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+code{
+    color: #666;
+    font-weight: 500 !important;
+    font-size: 13px !important;
+    font-family: 'Roboto Mono', 'Menlo', 'Monaco', Courier, monospace !important;
+    background: #FEFEFE;
+}
+
+.container {
+    @media (min-width: 1200px) {
+        width: 1200px;
+    } 
+}
+
+.common-container{
+    margin-top: 56px;
+}
+
+.top-warning{
+    display: none;
+    padding: 20px 0;
+    color: #8A6D3B;
+    text-align: center;
+    background: #FEF7E4;
+}
+
+.text-left{
+    text-align: left;
+}
+
+.text-right{
+    text-align: right;
+}
