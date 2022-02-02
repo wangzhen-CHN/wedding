@@ -2,30 +2,31 @@
   <div class="wedding-invitation" :class="{ 'invitation-bounce': canOpen }">
     <div class="invitation-container" :class="{ 'invitation-down': isOpening }">
       <div class="invitation-cover" @click="openInvitation">
-        <!-- <div class="cover-content" :class="{ 'invitation-up': isOpening }">
+        <div class="cover-content" :class="{ 'invitation-up': isOpening }">
           <div class="content-inside">
-            <img class="content-inside-photo" src="../images/photo.jpg" />
-            <p>我们结婚啦！</p>
-            <p><b>Jun & undefined</b></p>
-            <p>时间：invalid date value</p>
-            <p>地点：<b>location can not be found</b></p>
-            <div class="content-inside-bless">
-              <input
-                ref="wishInput"
-                v-model="wish"
-                placeholder="写下你的祝福"
-                @keyup.enter="sendBarrage"
-                @focus="isFocused = true"
-                @blur=";(isFocused = false), (hasEntered = false)"
-              />
-              <p v-if="!wish && isFocused && hasEntered">请输入祝福哦</p>
-              <div>
-                <button @click="sendBarrage">发送祝福弹幕</button>
-                <button @click="closeInvitation">关闭</button>
+            <img class="content-inside-photo" src="../images/photo12.jpg" />
+            <div class="bottom-inside">
+              <div class="bottom-inside-bg">
+                <img class="" src="../images/fo.svg" />
+              </div>
+              <div class="bottom-inside-content">
+                <p><img class="bottom-inside-content-word" src="../images/word.png" /></p>
+                <p class="name">汪振 & 方婷婷</p>
+                <div class="bottom-inside-date">
+                  <img class="" src="../images/left.svg" />
+                  <div class="date">2022.02.10 (正月初十)</div>
+                  <img class="" src="../images/right.svg" />
+                </div>
+                <p><b>河南・信阳</b></p>
+                <p class="last-word">陪伴我们走过许多岁月的亲人、朋友 诚邀您见证和分享我们的幸福时刻</p>
+                <!-- <div class="content-inside-qr">
+                  <img src="../images/qr.png" />
+                  长按扫描二维码查看照片
+                </div> -->
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
         <div class="cover-inside-left" :class="{ opening: isOpening }">
           <div class="invitation-word"><img src="../images/invitation.png" /></div>
         </div>
@@ -84,7 +85,7 @@ export default {
   z-index: 4;
   width: 100%;
   height: 100%;
-  padding: 40px 20px;
+  padding: 40px 10px;
   overflow: hidden;
   background: #2b2b48;
   background-size: 100%;
@@ -129,7 +130,7 @@ export default {
         left: 0;
         width: 100%;
         height: 100%;
-        padding: 10px 20px;
+        padding: 10px 15px;
         -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.4, 0, 1, 1);
         transition: transform 0.6s cubic-bezier(0.4, 0, 1, 1);
 
@@ -140,11 +141,11 @@ export default {
 
         .content-inside {
           height: 100%;
-          padding: 20px;
+          // padding: 20px;
           overflow: auto;
           color: #a9895d;
           text-align: center;
-          background-color: #fff1de;
+          background-color: #fff;
 
           .content-inside-photo {
             width: 100%;
@@ -268,7 +269,8 @@ export default {
         width: 40%;
         height: 100%;
         background-image: url('../images/invitation-bg-right.png');
-        background-size: auto;
+        background-repeat: no-repeat;
+        background-size: cover;
         border-radius: 10px;
         box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
         -webkit-transform-origin: 100% 50%;
@@ -297,6 +299,64 @@ export default {
         }
       }
     }
+  }
+}
+
+.bottom-inside {
+  position: relative;
+}
+
+.bottom-inside-bg {
+  position: absolute;
+  top: -200px;
+  width: 100%;
+  height: 100%;
+}
+
+.bottom-inside-content {
+  position: absolute;
+  top: -100px;
+  width: 100%;
+  text-align: center;
+
+  .name {
+    margin-bottom: 10px !important;
+    font-weight: 600;
+    font-size: 20px;
+  }
+}
+
+.bottom-inside-content-word {
+  width: 150px;
+}
+
+.bottom-inside-date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+
+  .date {
+    padding: 0 5px;
+  }
+
+  img {
+    height: 10px;
+  }
+}
+
+.last-word {
+  padding: 10px 35px;
+}
+
+.content-inside-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 80px;
   }
 }
 </style>

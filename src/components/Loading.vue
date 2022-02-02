@@ -1,15 +1,15 @@
 <template>
   <div class="wedding-loading">
-    <header class="editor-header">
+    <!-- <header class="editor-header">
       <a href="javascript:;"></a>
       <a href="javascript:;" class="minimum"></a>
       <a href="javascript:;" class="maximum"></a>
-    </header>
+    </header> -->
     <!-- 日期 -->
     <p class="code">
       Last login: <span>{{ startDate }}</span> on wz
     </p>
-    <p class="loading-word">程序加载中...</p>
+    <p class="loading-word">收到一封电子请柬...</p>
     <!--执行命令-->
     <p v-for="(execution, index) in executions" v-show="execution.visible" :key="index" class="code">
       [<span class="time">{{ execution.time }}</span
@@ -37,7 +37,7 @@ const executions = [
     visible: false
   },
   {
-    name: '请求资源',
+    name: '编译中',
     time: '',
     duration: 0,
     visible: false
@@ -55,7 +55,7 @@ const executions = [
     visible: false
   },
   {
-    name: '编译中...',
+    name: '发送中...',
     time: '',
     visible: false
   }
