@@ -4,7 +4,35 @@
       <div class="invitation-cover" @click="openInvitation">
         <div class="cover-content" :class="{ 'invitation-up': isOpening }">
           <div class="content-inside">
-            <img class="content-inside-photo" src="../images/photo12.jpg" />
+            <swiper :options="swiperOption" class="swiper-box">
+              <swiper-slide>
+                <img class="content-inside-photo" src="../images/wedding/photo0.png" />
+              </swiper-slide>
+              <swiper-slide>
+                <img class="content-inside-photo" src="../images/wedding/photo1.png" />
+              </swiper-slide>
+              <swiper-slide>
+                <img class="content-inside-photo" src="../images/wedding/photo2.png" />
+              </swiper-slide>
+              <swiper-slide>
+                <img class="content-inside-photo" src="../images/wedding/photo3.png" />
+              </swiper-slide>
+              <swiper-slide>
+                <img class="content-inside-photo" src="../images/wedding/photo4.png" />
+              </swiper-slide>
+              <swiper-slide>
+                <img class="content-inside-photo" src="../images/wedding/photo5.png" />
+              </swiper-slide>
+              <swiper-slide>
+                <img class="content-inside-photo" src="../images/wedding/photo6.png" />
+              </swiper-slide>
+              <swiper-slide>
+                <img class="content-inside-photo" src="../images/wedding/photo7.png" />
+              </swiper-slide>
+              <swiper-slide>
+                <img class="content-inside-photo" src="../images/wedding/photo8.png" />
+              </swiper-slide>
+            </swiper>
             <div class="bottom-inside">
               <div class="bottom-inside-bg">
                 <img class="" src="../images/fo.svg" />
@@ -18,7 +46,8 @@
                   <img class="" src="../images/right.svg" />
                 </div>
                 <p><b>河南・信阳</b></p>
-                <p class="last-word">陪伴我们走过许多岁月的亲人、朋友 诚邀您见证和分享我们的幸福时刻</p>
+                <p class="last-word1">陪伴我们走过许多岁月的亲人、朋友</p>
+                <p class="last-word2">诚邀您见证和分享我们的幸福时刻</p>
                 <!-- <div class="content-inside-qr">
                   <img src="../images/qr.png" />
                   长按扫描二维码查看照片
@@ -38,6 +67,8 @@
 </template>
 
 <script>
+import PF from './pf'
+
 export default {
   props: ['canOpen'],
   data() {
@@ -45,33 +76,36 @@ export default {
       isOpening: false,
       wish: '',
       isFocused: false,
-      hasEntered: false
+      hasEntered: false,
+      swiperOption: {
+        // 设置自动轮播
+        autoplay: {
+          delay: 5000 // 5秒切换一次
+        },
+        effect: 'fade',
+        // 设置轮播可循环
+        loop: true
+      }
     }
   },
   methods: {
     // 打开邀请函
     openInvitation() {
       this.isOpening = true
+      const pf = new PF({
+        life: 200
+      })
+      pf.init()
+      pf.start()
+      // setTimeout(() => {
+      //   pf.stop()
+      // }, 10000)
     },
     closeInvitation() {
       this.isOpening = false
       setTimeout(() => {
         this.$emit('onClose')
       }, 660)
-    },
-    // 发送弹幕
-    sendBarrage() {
-      this.$nextTick(() => {
-        this.hasEntered = true
-        if (!this.wish) {
-          return
-        }
-        this.isOpening = false
-        this.$refs.wishInput.blur()
-        setTimeout(() => {
-          this.$emit('sendBarrage', this.wish)
-        }, 660)
-      })
     }
   }
 }
@@ -304,6 +338,7 @@ export default {
 
 .bottom-inside {
   position: relative;
+  z-index: 2;
 }
 
 .bottom-inside-bg {
@@ -345,8 +380,12 @@ export default {
   }
 }
 
-.last-word {
-  padding: 10px 35px;
+.last-word1 {
+  padding-top: 10px;
+}
+
+.last-word2 {
+  padding-bottom: 10px;
 }
 
 .content-inside-qr {
