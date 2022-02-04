@@ -1,18 +1,58 @@
 <template>
   <div class="wedding-invitation" :class="{ 'invitation-bounce': canOpen }">
     <div class="invitation-container" :class="{ 'invitation-down': isOpening }">
-      <div class="invitation-cover" @click="openInvitation">
+      <div class="invitation-cover">
+        <div>
+          <div class="cover-inside-left" :class="{ opening: isOpening }">
+            <div class="invitation-word"><img src="../images/invitation.png" /></div>
+          </div>
+          <div class="cover-inside-right" :class="{ opening: isOpening }"></div>
+          <div v-if="!isOpening" class="open-box" @click="openInvitation">
+            <div class="wave"></div>
+            <img class="cover-inside-seal" src="../images/seal.png" />
+          </div>
+        </div>
         <div class="cover-content" :class="{ 'invitation-up': isOpening }">
           <div class="content-inside">
             <swiper :options="swiperOption" class="swiper-box">
               <swiper-slide>
-                <img class="content-inside-photo" src="../images/wedding/photo0.png" />
+                <img data-src="../../public/wedding/photo0.png" class="swiper-lazy content-inside-photo" />
+                <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
+                <img data-src="/wedding/photo1.png" class="swiper-lazy content-inside-photo" />
+                <div class="swiper-lazy-preloader"></div>
+              </swiper-slide>
+              <swiper-slide>
+                <img data-src="/wedding/photo2.png" class="swiper-lazy content-inside-photo" />
+                <div class="swiper-lazy-preloader"></div>
+              </swiper-slide>
+              <swiper-slide>
+                <img data-src="/wedding/photo3.png" class="swiper-lazy content-inside-photo" />
+                <div class="swiper-lazy-preloader"></div>
+              </swiper-slide>
+              <swiper-slide>
+                <img data-src="/wedding/photo4.png" class="swiper-lazy content-inside-photo" />
+                <div class="swiper-lazy-preloader"></div>
+              </swiper-slide>
+              <swiper-slide>
+                <img data-src="/wedding/photo5.png" class="swiper-lazy content-inside-photo" />
+                <div class="swiper-lazy-preloader"></div>
+              </swiper-slide>
+              <swiper-slide>
+                <img data-src="/wedding/photo6.png" class="swiper-lazy content-inside-photo" />
+                <div class="swiper-lazy-preloader"></div>
+              </swiper-slide>
+              <swiper-slide>
+                <img data-src="/wedding/photo7.png" class="swiper-lazy content-inside-photo" />
+                <div class="swiper-lazy-preloader"></div>
+              </swiper-slide>
+              <swiper-slide>
+                <img data-src="/wedding/photo8.png" class="swiper-lazy content-inside-photo" />
+                <div class="swiper-lazy-preloader"></div>
+              </swiper-slide>
+              <!-- <swiper-slide>
                 <img class="content-inside-photo" src="../images/wedding/photo1.png" />
-              </swiper-slide>
-              <swiper-slide>
-                <img class="content-inside-photo" src="../images/wedding/photo2.png" />
               </swiper-slide>
               <swiper-slide>
                 <img class="content-inside-photo" src="../images/wedding/photo3.png" />
@@ -31,7 +71,7 @@
               </swiper-slide>
               <swiper-slide>
                 <img class="content-inside-photo" src="../images/wedding/photo8.png" />
-              </swiper-slide>
+              </swiper-slide> -->
             </swiper>
             <div class="bottom-inside">
               <div class="bottom-inside-bg">
@@ -56,11 +96,6 @@
             </div>
           </div>
         </div>
-        <div class="cover-inside-left" :class="{ opening: isOpening }">
-          <div class="invitation-word"><img src="../images/invitation.png" /></div>
-        </div>
-        <div class="cover-inside-right" :class="{ opening: isOpening }"></div>
-        <img class="cover-inside-seal" src="../images/seal.png" :class="{ 'invitation-flight': isOpening }" />
       </div>
     </div>
   </div>
@@ -68,7 +103,6 @@
 
 <script>
 import PF from './pf'
-
 export default {
   props: ['canOpen'],
   data() {
@@ -76,6 +110,7 @@ export default {
       isOpening: false,
       wish: '',
       isFocused: false,
+      isLoadImg: false,
       hasEntered: false,
       swiperOption: {
         // 设置自动轮播
@@ -83,10 +118,19 @@ export default {
           delay: 5000 // 5秒切换一次
         },
         effect: 'fade',
+        //预加载
+        lazy: {
+          loadPrevNext: true
+        },
         // 设置轮播可循环
         loop: true
       }
     }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.isLoadImg = true
+    }, 1000)
   },
   methods: {
     // 打开邀请函
@@ -97,9 +141,9 @@ export default {
       })
       pf.init()
       pf.start()
-      // setTimeout(() => {
-      //   pf.stop()
-      // }, 10000)
+      setTimeout(() => {
+        pf.clear()
+      }, 15000)
     },
     closeInvitation() {
       this.isOpening = false
@@ -319,7 +363,7 @@ export default {
         }
       }
 
-      .cover-inside-seal {
+      .open-box {
         position: absolute;
         bottom: 100px;
         left: 70%;
@@ -327,12 +371,45 @@ export default {
         width: 80px;
         height: 80px;
         margin-left: -40px;
+        -webkit-animation-name: scaleDraw;
+        /*动画播放的次数*/
+        -webkit-animation-duration: 3s;
+        /*关键帧名称*/
+        -webkit-animation-timing-function: ease-in-out;
+        /*动画的速度曲线*/
+        -webkit-animation-iteration-count: infinite;
+        /*动画所花费的时间*/
+      }
+
+      .cover-inside-seal {
+        width: 80px;
+        height: 80px;
 
         &.invitation-flight {
           opacity: 0;
         }
       }
     }
+  }
+}
+@keyframes scaleDraw {
+  /*定义关键帧、scaleDrew是需要绑定到选择器的关键帧名称*/
+  0% {
+    transform: scale(1);
+    /*开始为原始大小*/
+  }
+
+  25% {
+    transform: scale(1.2);
+    /*放大1.1倍*/
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  75% {
+    transform: scale(1.2);
   }
 }
 
@@ -396,6 +473,36 @@ export default {
 
   img {
     width: 80px;
+  }
+}
+
+.swiper-box {
+  min-height: 200px;
+  --swiper-preloader-color: #fff; /* 单独设置预加载圆圈的颜色 */
+}
+
+.wave {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #f7debb;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.wave:first-child {
+  animation: circle-opacity 2s infinite;
+}
+
+@keyframes circle-opacity {
+  from {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  to {
+    transform: scale(2);
+    opacity: 0;
   }
 }
 </style>

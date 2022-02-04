@@ -41,6 +41,7 @@ pf.prototype.init = function () {
   this.box = document.createElement('canvas')
   this.box.width = this._win.w
   this.box.height = this._win.h
+  this.box.id = 'canvas'
   this.box.style.cssText = 'display: block;position: fixed;top: 0;left: 0;margin: 0;padding: 0;border: none;background: none;pointer-events: none;'
   this.box.style.zIndex = this._index
   document.body.appendChild(this.box)
@@ -129,6 +130,12 @@ pf.prototype.start = function () {
 
 pf.prototype.stop = function () {
   cancelAnimationFrame(this._anmition)
+}
+
+pf.prototype.clear = function () {
+  document.querySelector('canvas').remove()
+  this.stage = null
+  this.box = null
 }
 
 pf.prototype.drawImg = function (param) {
