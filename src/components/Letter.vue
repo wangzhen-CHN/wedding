@@ -12,43 +12,49 @@
             <img class="cover-inside-seal" src="../images/seal.png" />
           </div>
         </div>
+        <audio id="music" loop="loop">
+          <source src="http://file.coder.wang/简单的幸福-原版.mp3" type="audio/mpeg" />
+        </audio>
+        <div v-if="isOpening" class="music-box" @click.stop="playMusic">
+          <img src="../images/music.png" alt="" />
+        </div>
         <div class="cover-content" :class="{ 'invitation-up': isOpening }">
           <div class="content-inside">
             <swiper :options="swiperOption" class="swiper-box">
               <swiper-slide>
-                <img data-src="http://img.coder.wang/photo0.png" class="swiper-lazy content-inside-photo" />
+                <img data-src="http://file.coder.wang/photo0.png" class="swiper-lazy content-inside-photo" />
                 <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
-                <img data-src="http://img.coder.wang/photo1.png" class="swiper-lazy content-inside-photo" />
+                <img data-src="http://file.coder.wang/photo1.png" class="swiper-lazy content-inside-photo" />
                 <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
-                <img data-src="http://img.coder.wang/photo2.png" class="swiper-lazy content-inside-photo" />
+                <img data-src="http://file.coder.wang/photo2.png" class="swiper-lazy content-inside-photo" />
                 <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
-                <img data-src="http://img.coder.wang/photo3.png" class="swiper-lazy content-inside-photo" />
+                <img data-src="http://file.coder.wang/photo3.png" class="swiper-lazy content-inside-photo" />
                 <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
-                <img data-src="http://img.coder.wang/photo4.png" class="swiper-lazy content-inside-photo" />
+                <img data-src="http://file.coder.wang/photo4.png" class="swiper-lazy content-inside-photo" />
                 <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
-                <img data-src="http://img.coder.wang/photo5.png" class="swiper-lazy content-inside-photo" />
+                <img data-src="http://file.coder.wang/photo5.png" class="swiper-lazy content-inside-photo" />
                 <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
-                <img data-src="http://img.coder.wang/photo6.png" class="swiper-lazy content-inside-photo" />
+                <img data-src="http://file.coder.wang/photo6.png" class="swiper-lazy content-inside-photo" />
                 <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
-                <img data-src="http://img.coder.wang/photo7.png" class="swiper-lazy content-inside-photo" />
+                <img data-src="http://file.coder.wang/photo7.png" class="swiper-lazy content-inside-photo" />
                 <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
-                <img data-src="http://img.coder.wang/photo8.png" class="swiper-lazy content-inside-photo" />
+                <img data-src="http://file.coder.wang/photo8.png" class="swiper-lazy content-inside-photo" />
                 <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
             </swiper>
@@ -86,6 +92,7 @@ export default {
   props: ['canOpen'],
   data() {
     return {
+      isPlaying: false,
       isOpening: false,
       wish: '',
       isFocused: false,
@@ -123,9 +130,25 @@ export default {
         pf.init()
         pf.start()
       }, 400)
+      const music = document.querySelector('#music')
+      music.play()
+      this.isPlaying = true
       setTimeout(() => {
         pf.clear()
-      }, 4000)
+      }, 20000)
+    },
+    playMusic() {
+      const music = document.querySelector('#music')
+      const musicBox = document.querySelector('.music-box')
+      if (this.isPlaying) {
+        this.isPlaying = false
+        music.pause()
+        musicBox.style['animationPlayState'] = 'paused'
+      } else {
+        this.isPlaying = true
+        music.play()
+        musicBox.style['animationPlayState'] = 'running'
+      }
     },
     closeInvitation() {
       this.isOpening = false
@@ -490,5 +513,45 @@ export default {
 
 .swiper-slide {
   min-height: 300px;
+}
+
+.music-box {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #00000073;
+  border-radius: 100%;
+  animation: turn 4s linear infinite;
+
+  img {
+    width: 24px;
+  }
+}
+@keyframes turn {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  25% {
+    -webkit-transform: rotate(90deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+
+  75% {
+    -webkit-transform: rotate(270deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 </style>
