@@ -133,7 +133,8 @@ pf.prototype.stop = function () {
 }
 
 pf.prototype.clear = function () {
-  document.querySelector('canvas').remove()
+  const cv = document.querySelector('canvas')
+  cv.remove()
   this.stage = null
   this.box = null
 }

@@ -16,62 +16,41 @@
           <div class="content-inside">
             <swiper :options="swiperOption" class="swiper-box">
               <swiper-slide>
-                <img data-src="../../public/wedding/photo0.png" class="swiper-lazy content-inside-photo" />
+                <img data-src="http://img.coder.wang/photo0.png" class="swiper-lazy content-inside-photo" />
                 <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
-                <img data-src="/wedding/photo1.png" class="swiper-lazy content-inside-photo" />
+                <img data-src="http://img.coder.wang/photo1.png" class="swiper-lazy content-inside-photo" />
                 <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
-                <img data-src="/wedding/photo2.png" class="swiper-lazy content-inside-photo" />
+                <img data-src="http://img.coder.wang/photo2.png" class="swiper-lazy content-inside-photo" />
                 <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
-                <img data-src="/wedding/photo3.png" class="swiper-lazy content-inside-photo" />
+                <img data-src="http://img.coder.wang/photo3.png" class="swiper-lazy content-inside-photo" />
                 <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
-                <img data-src="/wedding/photo4.png" class="swiper-lazy content-inside-photo" />
+                <img data-src="http://img.coder.wang/photo4.png" class="swiper-lazy content-inside-photo" />
                 <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
-                <img data-src="/wedding/photo5.png" class="swiper-lazy content-inside-photo" />
+                <img data-src="http://img.coder.wang/photo5.png" class="swiper-lazy content-inside-photo" />
                 <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
-                <img data-src="/wedding/photo6.png" class="swiper-lazy content-inside-photo" />
+                <img data-src="http://img.coder.wang/photo6.png" class="swiper-lazy content-inside-photo" />
                 <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
-                <img data-src="/wedding/photo7.png" class="swiper-lazy content-inside-photo" />
+                <img data-src="http://img.coder.wang/photo7.png" class="swiper-lazy content-inside-photo" />
                 <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
-                <img data-src="/wedding/photo8.png" class="swiper-lazy content-inside-photo" />
+                <img data-src="http://img.coder.wang/photo8.png" class="swiper-lazy content-inside-photo" />
                 <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
-              <!-- <swiper-slide>
-                <img class="content-inside-photo" src="../images/wedding/photo1.png" />
-              </swiper-slide>
-              <swiper-slide>
-                <img class="content-inside-photo" src="../images/wedding/photo3.png" />
-              </swiper-slide>
-              <swiper-slide>
-                <img class="content-inside-photo" src="../images/wedding/photo4.png" />
-              </swiper-slide>
-              <swiper-slide>
-                <img class="content-inside-photo" src="../images/wedding/photo5.png" />
-              </swiper-slide>
-              <swiper-slide>
-                <img class="content-inside-photo" src="../images/wedding/photo6.png" />
-              </swiper-slide>
-              <swiper-slide>
-                <img class="content-inside-photo" src="../images/wedding/photo7.png" />
-              </swiper-slide>
-              <swiper-slide>
-                <img class="content-inside-photo" src="../images/wedding/photo8.png" />
-              </swiper-slide> -->
             </swiper>
             <div class="bottom-inside">
               <div class="bottom-inside-bg">
@@ -120,7 +99,8 @@ export default {
         effect: 'fade',
         //预加载
         lazy: {
-          loadPrevNext: true
+          loadPrevNext: true,
+          loadPrevNextAmount: 2
         },
         // 设置轮播可循环
         loop: true
@@ -139,11 +119,13 @@ export default {
       const pf = new PF({
         life: 200
       })
-      pf.init()
-      pf.start()
+      setTimeout(() => {
+        pf.init()
+        pf.start()
+      }, 400)
       setTimeout(() => {
         pf.clear()
-      }, 15000)
+      }, 4000)
     },
     closeInvitation() {
       this.isOpening = false
@@ -373,7 +355,7 @@ export default {
         margin-left: -40px;
         -webkit-animation-name: scaleDraw;
         /*动画播放的次数*/
-        -webkit-animation-duration: 3s;
+        -webkit-animation-duration: 2s;
         /*关键帧名称*/
         -webkit-animation-timing-function: ease-in-out;
         /*动画的速度曲线*/
@@ -504,5 +486,9 @@ export default {
     transform: scale(2);
     opacity: 0;
   }
+}
+
+.swiper-slide {
+  min-height: 300px;
 }
 </style>
