@@ -18,45 +18,36 @@
         <div v-if="isOpening" class="music-box" @click.stop="playMusic">
           <img src="../images/music.png" alt="" />
         </div>
-        <div class="cover-content" :class="{ 'invitation-up': isOpening }">
+        <div v-if="isOpening" class="cover-content" :class="{ 'invitation-up': isOpening }">
           <div class="content-inside">
             <swiper :options="swiperOption" class="swiper-box">
               <swiper-slide>
                 <img data-src="http://file.coder.wang/photo0.png" class="swiper-lazy content-inside-photo" />
-                <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
                 <img data-src="http://file.coder.wang/photo1.png" class="swiper-lazy content-inside-photo" />
-                <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
                 <img data-src="http://file.coder.wang/photo2.png" class="swiper-lazy content-inside-photo" />
-                <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
                 <img data-src="http://file.coder.wang/photo3.png" class="swiper-lazy content-inside-photo" />
-                <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
                 <img data-src="http://file.coder.wang/photo4.png" class="swiper-lazy content-inside-photo" />
-                <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
                 <img data-src="http://file.coder.wang/photo5.png" class="swiper-lazy content-inside-photo" />
-                <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
                 <img data-src="http://file.coder.wang/photo6.png" class="swiper-lazy content-inside-photo" />
-                <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
               <swiper-slide>
                 <img data-src="http://file.coder.wang/photo7.png" class="swiper-lazy content-inside-photo" />
-                <div class="swiper-lazy-preloader"></div>
               </swiper-slide>
-              <swiper-slide>
+              <!-- <swiper-slide>
                 <img data-src="http://file.coder.wang/photo8.png" class="swiper-lazy content-inside-photo" />
-                <div class="swiper-lazy-preloader"></div>
-              </swiper-slide>
+              </swiper-slide> -->
             </swiper>
             <div class="bottom-inside">
               <div class="bottom-inside-bg">
@@ -106,8 +97,8 @@ export default {
         effect: 'fade',
         //预加载
         lazy: {
-          loadPrevNext: true,
-          loadPrevNextAmount: 2
+          loadPrevNext: true
+          // loadPrevNextAmount: 2
         },
         // 设置轮播可循环
         loop: true

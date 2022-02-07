@@ -9,7 +9,7 @@
     <p class="code">
       Last login: <span>{{ startDate }}</span> on wz
     </p>
-    <p class="loading-word">收到一封电子请柬...</p>
+    <p class="loading-word">您有一封请柬待签收...</p>
     <!--执行命令-->
     <p v-for="(execution, index) in executions" v-show="execution.visible" :key="index" class="code">
       [<span class="time">{{ execution.time }}</span
@@ -18,7 +18,7 @@
       <span v-if="execution.duration !== undefined" class="duration">{{ execution.duration }} ms</span>
     </p>
     <!--进度条-->
-    <p v-show="isProcessed" class="code">
+    <p v-show="isProcessed" class="code code-percentage">
       {{ progressBarText }}
       <span class="percentage">{{ percentage }}%</span>
     </p> 
@@ -191,11 +191,12 @@ export default {
     font-weight: 500 !important;
     font-size: 16px !important;
     font-family: 'Roboto Mono', 'Menlo', 'Monaco', Courier, monospace !important;
-    line-height: 1.2;
+    line-height: 24px;
   }
 
   .loading-word {
     color: #68fcfb;
+    font-size: 18px;
   }
 
 
@@ -211,5 +212,9 @@ export default {
     margin-left: 10px;
     color: #bf36b7;
   }
+}
+
+.code-percentage{
+  margin-top: 20px;
 }
 </style>
